@@ -31,8 +31,9 @@ Validation CER (Character Error Rate) : 0.21923769507803118
 
 ## 2: TrOCR-base With Finetuning
 Setup: 10 Epochs. lr=5e-5 using AdamW Optimizer. Batch size = 4 (due to memory constraint) <br />
-Training Speed: 2 iterations  per second, trained on 2 x GPU T4
-Validation CER (Character Error Rate) : 0.28778011204481796
+Validation CER (Character Error Rate) : 0.1397005772005773 <br />
+
+Model seems to overfit after first epoch, training loss decreases while validation error increases. 
 
 ## 3: LoRa
 
