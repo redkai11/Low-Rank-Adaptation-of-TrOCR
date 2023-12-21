@@ -11,7 +11,7 @@ The primary goal of this project is to adapt a pre-existing transformer model fo
 
 ## Model Architecture
 The model architecture is based on an Encoder-Decoder based Transformer. Encoder is similar to that of ViT (Vision Transformer). <br />
-![Model Architecture](model_architecture.png?raw=true)
+![Model Architecture](model_architecture.png?raw=true) <br />
 
 ## Dataset
 The model will be finetuned on car license plate dataset provided by  <br />
@@ -41,5 +41,6 @@ Work in Progress
 # Limitations
 * License plates can vary significantly in format, structure, and character composition across different countries and regions. The model's training data primarily consists of North American license plates, and its performance may degrade when faced with license plates from other parts of the world.
 * The model is trained to recognize license plates containing English and numeral characters only. It may not perform accurately on license plates with characters from other languages or character sets.
+* TrOCR-BASE model has 334M. One should consider using distilled version of TrOCR-BASE model for production. 
 
 
