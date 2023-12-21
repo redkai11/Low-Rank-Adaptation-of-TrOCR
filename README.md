@@ -30,7 +30,7 @@ Validation CER (Character Error Rate) : 0.21923769507803118
 Setup: 10 Epochs. lr=5e-5 using AdamW Optimizer. Batch size = 4 (due to memory constraint) <br />
 Validation CER (Character Error Rate) : 0.1397005772005773 <br />
 
-The model appears to overfit after the first epoch, with the training loss decreasing while the validation error increases. Fine-tuning Transformer models on a small dataset often results in training instability, a known issue. Therefore, I suspect that the dataset is too small. A larger dataset, such as CCPD (Chinese City Parking Dataset) available at https://github.com/detectRecog/CCPD, might yield better results. However, TrOCR is not trained to recognize Chinese characters.
+The model appears to overfit after the first epoch; the training loss decreases while the validation error increases. Fine-tuning Transformer models on a small dataset often results in training instability, a known issue. Therefore, I suspect that the dataset is too small. A larger dataset, such as CCPD (Chinese City Parking Dataset) available at https://github.com/detectRecog/CCPD, might yield better results. However, TrOCR is not trained to recognize Chinese characters.
 
 ## 3: LoRa
 
