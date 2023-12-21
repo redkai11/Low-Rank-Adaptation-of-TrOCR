@@ -11,6 +11,7 @@ The primary goal of this project is to adapt a pre-existing transformer model fo
 
 ## Model Architecture
 The model architecture is based on an Encoder-Decoder based Transformer. Encoder is similar to that of ViT (Vision Transformer).
+![Model Architecture](model_architecture.jpg?raw=true)
 
 ## Dataset
 The model will be finetuned on car license plate dataset provided by  <br />
@@ -22,12 +23,14 @@ Number of test examples: 263
 
 # Methods/Results
 
-## 1. Without Finetuning
+## Benchmark Performances
+TODO. Add YOLO.
+
+## 1. TrOCR-base Without Finetuning
 Validation CER (Character Error Rate) : 0.21923769507803118
 
-## 2: Finetuning
+## 2: TrOCR-base With Finetuning
 Setup: 10 Epochs. lr=5e-5 using AdamW Optimizer. Batch size = 4 (due to memory constraint) <br />
-After 3rd epoch, Validation CER increaes so it seems like the model is overfitting or we are overshooting the gradie
 Training Speed: 2 iterations  per second, trained on 2 x GPU T4
 Validation CER (Character Error Rate) : 0.28778011204481796
 
