@@ -1,8 +1,6 @@
 # Low-Rank-Adaptation-of-TrOCR
 
-This repository contains code and resources to finetune an existing transformer model for the task of recognizing car license plates using an Image-to-Text Encoder-Decoder architecture based on the Transformer model. This project uses the model presented in the paper TrOCR: Transformer-based Optical Character Recognition with Pre-trained Models.
-
-https://arxiv.org/abs/2109.10282
+This repository contains code and resources to finetune an existing transformer model for the task of recognizing car license plates using an Image-to-Text Encoder-Decoder architecture based on the Transformer model. This project uses the model presented in the paper [TrOCR: Transformer-based Optical Character Recognition with Pre-trained Models](https://arxiv.org/abs/2109.10282).
 
 The metric used is Character Error Rate (CER) which is a metric used to evaluate the performance of optical character recognition (OCR). It is a measure of the accuracy of these systems in converting input data (such as images or spoken language) into text. CER is calculated by comparing the output of the system to a reference or ground truth text and counting the number of characters that are incorrectly recognized or substituted.
 
@@ -14,8 +12,7 @@ The model architecture is based on an Encoder-Decoder based Transformer. Encoder
 ![Model Architecture](model_architecture.png?raw=true) <br />
 
 ## Dataset
-The model will be finetuned on car license plate dataset provided by  <br />
-https://universe.roboflow.com/yashwanthworkspace/numbers-identification/dataset/2  <br />
+The model will be finetuned on [car license plate dataset](https://universe.roboflow.com/yashwanthworkspace/numbers-identification/dataset/2) provided by Roboflow
 
 Number of training examples: 1843  <br />
 Number of validation examples: 527  <br />
