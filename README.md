@@ -13,26 +13,30 @@ The primary goal of this project is to adapt a pre-existing transformer model fo
 The model architecture is based on an Encoder-Decoder based Transformer. Encoder is similar to that of ViT (Vision Transformer).
 
 ## Dataset
-The model will be finetuned on car license plate dataset provided by 
+The model will be finetuned on car license plate dataset provided by  <br />
+https://universe.roboflow.com/yashwanthworkspace/numbers-identification/dataset/2  <br />
 
-https://universe.roboflow.com/yashwanthworkspace/numbers-identification/dataset/2
-
-Number of training examples: 1843 \\
-Number of validation examples: 527 \\
+Number of training examples: 1843  <br />
+Number of validation examples: 527  <br />
 Number of test examples: 263
 
 # Methods/Results
 
-## 1: Direct Finetuning
-Setup: 10 Epochs. lr=5e-5.\\
+## 1. Without Finetuning
+Validation CER (Character Error Rate) : 0.21923769507803118
+
+## 2: Finetuning
+Setup: 10 Epochs. lr=5e-5 using AdamW Optimizer. Batch size = 4 (due to memory constraint) <br />
 After 3rd epoch, Validation CER increaes so it seems like the model is overfitting or we are overshooting the gradie
 Training Speed: 2 iterations  per second, trained on 2 x GPU T4
 Validation CER (Character Error Rate) : 0.28778011204481796
 
-## 2: LoRa
+## 3: LoRa
 
 Work in Progress
 
 # Limitations
-Due to memory/computing constraint, I have used trOCR-small model. 
-https://huggingface.co/microsoft/trocr-small-printed
+* License plates can vary significantly in format, structure, and character composition across different countries and regions. The model's training data primarily consists of North American license plates, and its performance may degrade when faced with license plates from other parts of the world.
+* The model is trained to recognize license plates containing English and numeral characters only. It may not perform accurately on license plates with characters from other languages or character sets.
+
+
