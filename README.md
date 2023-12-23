@@ -10,7 +10,8 @@ The primary goal of this project is to adapt a pre-existing transformer model fo
 ## Model Architecture
 The model architecture is based on an Encoder-Decoder based Transformer. 
 * TrOCR uses pretrained Image transformer and text transformer.
-* Encoder can be intialized with pre-trained ViT-style model (Vision Transformer). <br />
+* Encoder was intialized with pre-trained ViT-style model (Vision Transformer). <br />
+* Decoder was initalized with pre-trained RoBERTa and MiniLM. 
 ![Model Architecture](model_architecture.png?raw=true) <br />
 
 ## Dataset
@@ -51,7 +52,7 @@ The original author of the dataset/project, accessible [here](https://universe.r
 
 Surprisingly, the baseline model, without any finetuning, outperformed the YOLO-based model. Implementing targeted LoRA finetuning, however, led to a substantial enhancement in performance. The refined model achieved an outstanding Validation CER of 0.011922799422799422 and Test CER of 0.01222989195678271, after training for only 16 epochs. 
 
-The fine-tuning process using LoRA has yielded promising gains; however, the relatively brief training period of 16 epochs raises questions about whether the model has fully converged to its optimal state. I believe that the model is capable of absorbing more informationlearning further reducing the CER. This project not only showcased the effectiveness of fine-tuning a pre-trained large vision model but also emphasized the unique contribution of LoRA in the context of a dataset with limited size. The ability to harness the inherent knowledge within a pre-trained model and tailor it for specific tasks, showcasing the flexibility of this approach.
+The fine-tuning process using LoRA has yielded promising gains; however, the relatively brief training period of 16 epochs raises questions about whether the model has fully converged to its optimal state. I believe that the model is capable of absorbing more informationlearning further reducing the CER. This project not only showcased the effectiveness of fine-tuning a pre-trained large language model but also emphasized the unique contribution of LoRA in the context of a dataset with limited size. The ability to harness the inherent knowledge within a pre-trained model and tailor it for specific tasks, showcasing the flexibility of this approach.
 
 # Limitations
 * Due to computational limits, I did not calculate Test CER for method 1 and 2.
