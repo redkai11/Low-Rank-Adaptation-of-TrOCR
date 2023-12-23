@@ -1,203 +1,74 @@
----
-library_name: peft
-base_model: microsoft/trocr-base-printed
----
-
-# Model Card for Model ID
-
-<!-- Provide a quick summary of what the model is/does. -->
-
-
-
-## Model Details
-
-### Model Description
-
-<!-- Provide a longer summary of what this model is. -->
-
-
-
-- **Developed by:** [More Information Needed]
-- **Shared by [optional]:** [More Information Needed]
-- **Model type:** [More Information Needed]
-- **Language(s) (NLP):** [More Information Needed]
-- **License:** [More Information Needed]
-- **Finetuned from model [optional]:** [More Information Needed]
-
-### Model Sources [optional]
-
-<!-- Provide the basic links for the model. -->
-
-- **Repository:** [More Information Needed]
-- **Paper [optional]:** [More Information Needed]
-- **Demo [optional]:** [More Information Needed]
-
-## Uses
-
-<!-- Address questions around how the model is intended to be used, including the foreseeable users of the model and those affected by the model. -->
-
-### Direct Use
-
-<!-- This section is for the model use without fine-tuning or plugging into a larger ecosystem/app. -->
-
-[More Information Needed]
-
-### Downstream Use [optional]
-
-<!-- This section is for the model use when fine-tuned for a task, or when plugged into a larger ecosystem/app -->
-
-[More Information Needed]
-
-### Out-of-Scope Use
-
-<!-- This section addresses misuse, malicious use, and uses that the model will not work well for. -->
-
-[More Information Needed]
-
-## Bias, Risks, and Limitations
-
-<!-- This section is meant to convey both technical and sociotechnical limitations. -->
-
-[More Information Needed]
-
-### Recommendations
-
-<!-- This section is meant to convey recommendations with respect to the bias, risk, and technical limitations. -->
-
-Users (both direct and downstream) should be made aware of the risks, biases and limitations of the model. More information needed for further recommendations.
-
-## How to Get Started with the Model
-
-Use the code below to get started with the model.
-
-[More Information Needed]
-
-## Training Details
-
-### Training Data
-
-<!-- This should link to a Data Card, perhaps with a short stub of information on what the training data is all about as well as documentation related to data pre-processing or additional filtering. -->
-
-[More Information Needed]
-
-### Training Procedure 
-
-<!-- This relates heavily to the Technical Specifications. Content here should link to that section when it is relevant to the training procedure. -->
-
-#### Preprocessing [optional]
-
-[More Information Needed]
-
-
-#### Training Hyperparameters
-
-- **Training regime:** [More Information Needed] <!--fp32, fp16 mixed precision, bf16 mixed precision, bf16 non-mixed precision, fp16 non-mixed precision, fp8 mixed precision -->
-
-#### Speeds, Sizes, Times [optional]
-
-<!-- This section provides information about throughput, start/end time, checkpoint size if relevant, etc. -->
-
-[More Information Needed]
-
-## Evaluation
-
-<!-- This section describes the evaluation protocols and provides the results. -->
-
-### Testing Data, Factors & Metrics
-
-#### Testing Data
-
-<!-- This should link to a Data Card if possible. -->
-
-[More Information Needed]
-
-#### Factors
-
-<!-- These are the things the evaluation is disaggregating by, e.g., subpopulations or domains. -->
-
-[More Information Needed]
-
-#### Metrics
-
-<!-- These are the evaluation metrics being used, ideally with a description of why. -->
-
-[More Information Needed]
-
-### Results
-
-[More Information Needed]
-
-#### Summary
-
-
-
-## Model Examination [optional]
-
-<!-- Relevant interpretability work for the model goes here -->
-
-[More Information Needed]
-
-## Environmental Impact
-
-<!-- Total emissions (in grams of CO2eq) and additional considerations, such as electricity usage, go here. Edit the suggested text below accordingly -->
-
-Carbon emissions can be estimated using the [Machine Learning Impact calculator](https://mlco2.github.io/impact#compute) presented in [Lacoste et al. (2019)](https://arxiv.org/abs/1910.09700).
-
-- **Hardware Type:** [More Information Needed]
-- **Hours used:** [More Information Needed]
-- **Cloud Provider:** [More Information Needed]
-- **Compute Region:** [More Information Needed]
-- **Carbon Emitted:** [More Information Needed]
-
-## Technical Specifications [optional]
-
-### Model Architecture and Objective
-
-[More Information Needed]
-
-### Compute Infrastructure
-
-[More Information Needed]
-
-#### Hardware
-
-[More Information Needed]
-
-#### Software
-
-[More Information Needed]
-
-## Citation [optional]
-
-<!-- If there is a paper or blog post introducing the model, the APA and Bibtex information for that should go in this section. -->
-
-**BibTeX:**
-
-[More Information Needed]
-
-**APA:**
-
-[More Information Needed]
-
-## Glossary [optional]
-
-<!-- If relevant, include terms and calculations in this section that can help readers understand the model or model card. -->
-
-[More Information Needed]
-
-## More Information [optional]
-
-[More Information Needed]
-
-## Model Card Authors [optional]
-
-[More Information Needed]
-
-## Model Card Contact
-
-[More Information Needed]
-
-
-### Framework versions
-
-- PEFT 0.7.1
+# Low-Rank-Adaptation-of-TrOCR
+
+This repository contains code and resources to finetune an existing transformer model for the task of recognizing car license plates using an Image-to-Text Encoder-Decoder architecture based on the Transformer model. This project uses the model presented in the paper [TrOCR: Transformer-based Optical Character Recognition with Pre-trained Models](https://arxiv.org/abs/2109.10282).
+
+The metric used is Character Error Rate (CER) which is a metric used to evaluate the performance of optical character recognition (OCR). It is a measure of the accuracy of these systems in converting input data (such as images or spoken language) into text. CER is calculated by comparing the output of the system to a reference or ground truth text and counting the number of characters that are incorrectly recognized or substituted.
+
+## Objective
+The primary goal of this project is to adapt a pre-existing transformer model for license plate recognition, leveraging its capability to understand the spatial relationships in images and generate corresponding textual representations.
+
+## Model Architecture
+The model architecture is based on an Encoder-Decoder based Transformer. 
+* TrOCR uses pretrained Image transformer and text transformer.
+* Encoder was intialized with pre-trained ViT-style model (Vision Transformer). <br />
+* Decoder was initalized with pre-trained RoBERTa and MiniLM. 
+![Model Architecture](model_architecture.png?raw=true) <br />
+
+## Dataset
+The model will be finetuned on [car license plate dataset](https://universe.roboflow.com/yashwanthworkspace/numbers-identification/dataset/2) provided by Roboflow
+
+Number of training examples: 1843  <br />
+Number of validation examples: 527  <br />
+Number of test examples: 263
+
+# Methods/Results
+
+## 1. TrOCR-base Without Finetuning
+Validation CER (Character Error Rate) : 0.21923769507803118
+
+## 2: TrOCR-base With Finetuning
+* trainable params: 334511616 || all params: 334511616 || trainable%: 1 <br />
+* 10 Epochs <br />
+* lr=5e-5 using AdamW Optimizer <br />
+* Batch size = 4 (due to GPU memory constraint) <br />
+
+Validation CER (Character Error Rate) : 0.1397005772005773 <br />
+
+The model appears to overfit after the first epoch; the training loss decreases while the validation error increases. Fine-tuning Transformer models on a small dataset often results in training instability, a known issue. Therefore, I suspect that the dataset is too small. A larger dataset, such as CCPD (Chinese City Parking Dataset) available at https://github.com/detectRecog/CCPD, might yield better results but note that TrOCR is not trained to recognize Chinese characters. To tackle this proble, researchers at Microsoft came up with [LoRA: Low-Rank Adaptation](https://arxiv.org/abs/2106.09685) to solve this problem. 
+
+## 3: [LoRA: Low-Rank Adaptation](https://arxiv.org/abs/2106.09685)
+* trainable params: 589824 || all params: 334511616 || trainable%: 0.18 <br />
+* LoRA r = 16 <br />
+* 100 Epochs <br />
+* lr=5e-5 using AdamW Optimizer <br />
+* Batch size = 16 (due to GPU memory constraint) <br />
+
+Validation CER (Character Error Rate) : 0.011922799422799422 after 16 epochs <br />
+Test CER (Character Error Rate) : 0.01222989195678271 after 16 epochs <br />
+There is still room for the model to absorb for information but I stopped the fine-tuning process early due to computational limits.
+
+# Conclusion
+The original author of the dataset/project, accessible [here](https://universe.roboflow.com/yashwanthworkspace/numbers-identification), appears to have employed a YOLO-based model, pretrained on the [COCO dataset](https://cocodataset.org/#home), boasting impressive metrics of mAP 99.5%, Precision 99.8%, and Recall 99.8%. While these numbers initially seem impressive, I verified the claims by downloading and evaluating the model. Upon further analysis, it became apparent that the author's model falls short in terms of CER, showing Validation Character Error Rate (CER) of 0.7306 and a Test CER of 0.7431. 
+
+Surprisingly, the baseline model, without any finetuning, outperformed the YOLO-based model. Implementing targeted LoRA finetuning, however, led to a substantial enhancement in performance. The refined model achieved an outstanding Validation CER of 0.011922799422799422 and Test CER of 0.01222989195678271, after training for only 16 epochs. 
+
+The fine-tuning process using LoRA has yielded promising gains; however, the relatively brief training period of 16 epochs raises questions about whether the model has fully converged to its optimal state. I believe that the model is capable of absorbing more informationlearning further reducing the CER. This project not only showcased the effectiveness of fine-tuning a pre-trained large language model but also emphasized the unique contribution of LoRA in the context of a dataset with limited size. The ability to harness the inherent knowledge within a pre-trained model and tailor it for specific tasks, showcasing the flexibility of this approach.
+
+# Limitations
+* Due to computational limits, I did not calculate Test CER for method 1 and 2.
+* License plates can vary significantly in format, structure, and character composition across different countries and regions. The model's training data primarily consists of North American license plates, and its performance may degrade when faced with license plates from other parts of the world.
+* The model is trained to recognize license plates containing English and numeral characters only. It may not perform accurately on license plates with characters from other languages or character sets.
+* TrOCR-BASE model has 334M which is huge. One should consider using distilled version of TrOCR-BASE model for production. 
+
+@misc{ numbers-identification_dataset,
+    title = { numbers-identification Dataset },
+    type = { Open Source Dataset },
+    author = { yashwanthworkspace },
+    howpublished = { \url{ https://universe.roboflow.com/yashwanthworkspace/numbers-identification } },
+    url = { https://universe.roboflow.com/yashwanthworkspace/numbers-identification },
+    journal = { Roboflow Universe },
+    publisher = { Roboflow },
+    year = { 2022 },
+    month = { nov },
+    note = { visited on 2023-12-23 },
+}
