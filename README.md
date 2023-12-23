@@ -23,7 +23,7 @@ Number of test examples: 263
 # Methods/Results
 
 ## 1. TrOCR-base Without Finetuning
-Mean Validation CER (Character Error Rate) : 0.21923769507803118
+Validation CER (Character Error Rate) : 0.21923769507803118
 
 ## 2: TrOCR-base With Finetuning
 * trainable params: 334511616 || all params: 334511616 || trainable%: 1 <br />
