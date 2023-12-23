@@ -44,16 +44,14 @@ The model appears to overfit after the first epoch; the training loss decreases 
 
 Validation CER (Character Error Rate) : 0.011922799422799422 after 16 epochs <br />
 Test CER (Character Error Rate) : 0.01222989195678271 after 16 epochs <br />
-There is still room for the model to absorve for information but I stopped the fine-tuning process early due to computational limits.
+There is still room for the model to absorb for information but I stopped the fine-tuning process early due to computational limits.
 
 # Conclusion
 The original author of the dataset/project, accessible [here](https://universe.roboflow.com/yashwanthworkspace/numbers-identification), appears to have employed a YOLO-based model, pretrained on the [COCO dataset](https://cocodataset.org/#home), boasting impressive metrics of mAP 99.5%, Precision 99.8%, and Recall 99.8%. While these numbers initially seem impressive, I verified the claims by downloading and evaluating the model. Upon further analysis, it became apparent that the author's model falls short in terms of CER, showing Validation Character Error Rate (CER) of 0.7306 and a Test CER of 0.7431. 
 
 Surprisingly, the baseline model, without any finetuning, outperformed the YOLO-based model. Implementing targeted LoRA finetuning, however, led to a substantial enhancement in performance. The refined model achieved an outstanding Validation CER of 0.011922799422799422 and Test CER of 0.01222989195678271, after training for only 16 epochs. 
 
-The fine-tuning process using LoRA has yielded promising gains; however, the relatively brief training period of 16 epochs raises questions about whether the model has fully converged to its optimal state. It is plausible that there is untapped potential for further learning, presenting an exciting avenue for exploration.
-
-This project not only showcased the effectiveness of fine-tuning a pre-trained large vision model but also emphasized the unique contribution of LoRA in the context of a dataset with limited size. The ability to harness the inherent knowledge within a pre-trained model and tailor it for specific tasks, showcasing the flexibility of this approach.
+The fine-tuning process using LoRA has yielded promising gains; however, the relatively brief training period of 16 epochs raises questions about whether the model has fully converged to its optimal state. I believe that the model is capable of absorbing more informationlearning further reducing the CER. This project not only showcased the effectiveness of fine-tuning a pre-trained large vision model but also emphasized the unique contribution of LoRA in the context of a dataset with limited size. The ability to harness the inherent knowledge within a pre-trained model and tailor it for specific tasks, showcasing the flexibility of this approach.
 
 # Limitations
 * Due to computational limits, I did not calculate Test CER for method 1 and 2.
