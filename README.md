@@ -21,31 +21,9 @@ Number of training examples: 1843  <br />
 Number of validation examples: 527  <br />
 Number of test examples: 263
 
-# Methods/Results
+# Results
 
-## 1. TrOCR-base Without Finetuning
-Validation CER (Character Error Rate) : 0.21923769507803118
-
-## 2: TrOCR-base With Finetuning
-* trainable params: 334511616 || all params: 334511616 || trainable%: 1 <br />
-* 10 Epochs <br />
-* lr=5e-5 using AdamW Optimizer <br />
-* Batch size = 4 (due to GPU memory constraint) <br />
-
-Validation CER (Character Error Rate) : 0.1397005772005773 <br />
-
-The model appears to overfit after the first epoch; the training loss decreases while the validation error increases. Fine-tuning Transformer models on a small dataset often results in training instability, a known issue. Therefore, I suspect that the dataset is too small. A larger dataset, such as CCPD (Chinese City Parking Dataset) available at https://github.com/detectRecog/CCPD, might yield better results but note that TrOCR is not trained to recognize Chinese characters. To tackle this proble, researchers at Microsoft came up with [LoRA: Low-Rank Adaptation](https://arxiv.org/abs/2106.09685) to solve this problem. 
-
-## 3: [LoRA: Low-Rank Adaptation](https://arxiv.org/abs/2106.09685)
-* trainable params: 589824 || all params: 334511616 || trainable%: 0.18 <br />
-* LoRA r = 16 <br />
-* 100 Epochs <br />
-* lr=5e-5 using AdamW Optimizer <br />
-* Batch size = 16 (due to GPU memory constraint) <br />
-
-Validation CER (Character Error Rate) : 0.011922799422799422 after 16 epochs <br />
-Test CER (Character Error Rate) : 0.01222989195678271 after 16 epochs <br />
-There is still room for the model to absorb for information but I stopped the fine-tuning process early due to computational limits.
+![Results](results.png?raw=true) <br />
 
 # Conclusion
 The original author of the dataset/project, accessible [here](https://universe.roboflow.com/yashwanthworkspace/numbers-identification), appears to have employed a YOLO-based model, pretrained on the [COCO dataset](https://cocodataset.org/#home), boasting impressive metrics of mAP 99.5%, Precision 99.8%, and Recall 99.8%. While these numbers initially seem impressive, I verified the claims by downloading and evaluating the model. Upon further analysis, it became apparent that the author's model falls short in terms of CER, showing Validation Character Error Rate (CER) of 0.7306 and a Test CER of 0.7431. 
